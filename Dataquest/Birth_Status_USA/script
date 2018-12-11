@@ -1,0 +1,44 @@
+#Defs are created in Jupyter notebook!
+
+#read .csv file
+def read_csv(input_list):
+    data=(open(input_list, "r").read().split("\n"))
+    string_list=data[1:len(data)]
+    final_list=[]
+    for each in string_list:
+        int_fields =[]
+        string_fields = each.split(",")
+        for values in string_fields:
+            int_fields.append(int(values))
+        final_list.append(int_fields)
+    return final_list
+    
+#Return with a monthly statistic about the births
+cdc_list=read_csv("US_births_1994-2003_CDC_NCHS.csv")
+def month_births():
+    births_per_month={}
+    for each in cdc_list:
+        if each[1] not in births_per_month:
+            births_per_month.update({each[1] : 1})
+        else:
+            key_value=births_per_month.get(each[1])
+            births_per_month.update({each[1]:key_value+1})
+    return births_per_month
+births = month_births()
+births
+
+#Return with a yearly statistic
+cdc_list=read_csv("US_births_1994-2003_CDC_NCHS.csv")
+def calc_counts(input_list,input_column):
+    count={}
+    for each in input_list:
+        if each[input_column] not in count:
+            count.update({each[input_column]:1})
+        else:
+            key_value=count.get(each[input_column])
+            count.update({each[input_column]:key_value+1})
+    return count
+cdc_list
+cdc_year_births=calc_counts(cdc_list,0)
+cdc_year_births
+cdc_year_births
