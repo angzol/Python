@@ -25,7 +25,6 @@ def month_births():
             births_per_month.update({each[1]:key_value+1})
     return births_per_month
 births = month_births()
-births
 
 #Return with a yearly statistic
 cdc_list=read_csv("US_births_1994-2003_CDC_NCHS.csv")
@@ -38,7 +37,3 @@ def calc_counts(input_list,input_column):
             key_value=count.get(each[input_column])
             count.update({each[input_column]:key_value+1})
     return count
-cdc_list
-cdc_year_births=calc_counts(cdc_list,0)
-cdc_year_births
-cdc_year_births
